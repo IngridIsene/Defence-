@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<h1 class="title">Account information</h1>
+<div class="content">
+    Hello {{ user.name }}.
+    {{ user.email }}
+    {{ user.phone_number }}<br>
+    <div>
+      <table><h3><br>Account Balance</h3>
+        <tr>
+          <th></th>
+          <th>Account Number:</th>
+          <th>Balance:</th>    
+        </tr>
+        <tr>
+          <th>Expense Account</th>
+          <th>{{ acc.acc_num_exp }} </th>
+          <th>{{ acc.acc_num_exp_bal }}</th>
+        </tr>
+        <tr>
+          <th>Savings account</th>
+          <th>{{ acc.acc_num_sav }}</th>
+          <th>{{ acc.acc_num_sav_bal }} <th>
+        </tr>
+      </table>
+    </div>
+</div>
+
+<form method='POST' action="/transfer">
+  <div class="field">
+    <div class="control">
+      <input class="input is-large" type="number" name="trans_from" placeholder="From account" required>
+    </div>
+  </div>
+  <div class="field">
+    <div class="control">
+      <input class="input is-large" type="number" name="trans_to" placeholder="To account" required>
+    </div>
+  </div>
+  <div class="field">
+    <div class="control">
+      <input class="input is-large" type="number" name="amount" placeholder="Amount" required>
+    </div>
+  </div>
+  <button class="button is-block is-info is-large is-fullwidth">Transfer</button><br>
+</form>
+
+{% endblock %}

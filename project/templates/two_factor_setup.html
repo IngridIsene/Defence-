@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>Two Factor Authentication Setup</h1>
+    <p> Start FreeOTP on your smartphone and scan the following QR Code with it:</p>
+    <p><img id="qrcode" src="{{ url_for('auth.qrcode') }}"></p>
+
+    <form method="POST" action="/validate">
+
+      <label for=token>One time password</label>
+                <div class="control">  
+                  <input class="input is-medium" type="number" name="token" placeholder="one time password" required>
+                </div> 
+                <br>
+              <button class="button is-block is-info is-large is-fullwidth"> Continue </button>
+      </form>
+
+    <p><a href="{{ url_for('auth.validate') }}">Click here when you have scanned the QR Code and entered the code</a></p>
+
+{% endblock %}

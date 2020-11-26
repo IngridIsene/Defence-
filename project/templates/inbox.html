@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="notification is-danger">
+      {{ messages[0] }}
+    </div>
+  {% endif %}
+{% endwith %}
+
+{{ user.name }}
+
+<div class="column is-4 is-offset-4">
+<form method="POST" action='/messages'>
+  <div class="field">
+    <label for="message">Compose message:</label><br>
+      <select for="message_recipient" name="message_recipient" placeholder="recipient">
+      <option value="payment">Payment</option>
+      <option value="card_and_payment">Card and payment</option>
+      <option value="online_banking">Online banking</option>
+      <option value="insurance">Insurance</option>
+      <option value="loan">Loans</option>
+      <option value="other">Other</option>
+      </select><br>
+    <textarea maxlength="1000" placeholder="your message:" id="message" name="message" rows="25" cols="40" ></textarea> <br>
+    <button class="button is-block is-info is-large is-fullwidth"> Submit </button>
+  </div>
+</form>
+</div>
+
+{% endblock %}
+
+

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="notification is-danger">
+              {{ messages[0] }}
+            </div>
+        {% endif %}
+{% endwith %}
+<p>Hello {{ user.name }}</p>
+<p><br>
+Re-authenticate to compose and send a message. <br>
+</p><br>
+
+<div class="column is-4 is-offset-4">
+  <form method="POST" action='/inbox'>
+    <div class="field">
+        <label for="password">Password</label>
+          <div class="control">
+            <input class="input is-medium" type="password" name="password" placeholder="password" autofocus="off" required><br>
+          </div>
+        <label for=token>One time password</label>
+          <div class="control">  
+            <input class="input is-medium" type="number" name="token" placeholder="one time password" required>
+          </div> 
+          <br>
+        <button class="button is-block is-info is-large is-fullwidth"> Continue </button>
+    </div>
+  </form>
+</div>
+{% endblock %}
+
+
+
+<!--
+Must add inbox with title categories
+
+<input type="checkbox" id="certain" name="certain">
+      <label for="certain">Certain to proceed</label><br>
+
+-->

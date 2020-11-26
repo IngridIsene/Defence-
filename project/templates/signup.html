@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="column is-4 is-offset-4">
+  <h3 class="title">Register</h3><br>
+  <h5 style="color:red;">Note: upon submission a page with sensitive information will be displayed.</h5>
+  <div class="box">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class="notification is-danger">
+        {% for message in messages %} 
+        <p>{{ message }}.</p>
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% endwith %}
+  
+
+    
+    <form method='POST' action="/signup">
+      <label> Social Security Number</label>
+      <div class="field">
+        <div class="control">
+          <input class="input is-large" type="number" name="social_security_number" placeholder="Social Security Number" autofocus="" required>
+        </div>
+      </div>
+      <label>Email</label>
+      <div class="field">
+        <div class="control">
+          <input class="input is-large" type="email" name="email" placeholder="Email" required>
+        </div>
+      </div>
+      <label>Phone Number</label>
+      <div class="field">
+        <div class="control">
+          <input class="input is-large" type="tel" name="phone_number" placeholder="Phone Number" required>
+        </div>
+      </div>
+      <label>Given name</label>
+      <div class="field">
+        <div class="control">
+          <input class="input is-large" type="text" name="given_name" placeholder="Given name" autofocus="" required>
+        </div>
+      </div>
+      <label>Surname</label>
+      <div class="field">
+        <div class="control">
+          <input class="input is-large" type="text" name="surname" placeholder="Surname" autofocus="" required>
+        </div>
+      </div>
+      <label>Street Address</label>
+      <div class="field">
+        <div class="control">
+          <input class="input is-large" type="text" name="Street_Address" placeholder="Street Address" autofocus="" required>
+        </div>
+      </div>
+      <label>Post code</label>
+      <div class="field">
+        <div class="control">
+          <input class="input is-large" type="number" name="post_code" placeholder="Post Code" autofocus="" required>
+        </div>
+      </div>
+      <label>Password</label>
+      <div class="field">
+        <div class="control">
+          <input class="input is-large" type="password" name="password1" placeholder="Password 12-64 characters" pattern=".{12,64}" id="password1" required title="12 characters minimum">
+        </div>
+      </div>
+      <label>Confirm Password</label>
+      <div class="field">
+        <div class="control">
+          <input class="input is-large" type="password" name="password2" placeholder="Confirm password" pattern=".{12,64}" id="password2" oninput="check(this)" required title="12 charachters minimum">
+        </div>
+        <script language='javascript' type='text/javascript'>
+          function check(input) {
+            if (input.value != document.getElementById('password1').value) {
+                input.setCustomValidity('Password Must Be Matching.');
+            } else {
+              // input is valid -- reset the error message
+              input.setCustomValidity('');
+            }
+          }
+        </script>
+      </div>
+
+      <button class="button is-block is-info is-large is-fullwidth">Sign Up</button><br>
+      <button class="button is-block is info is-large is-fullwidth"><a href="{{ url_for('auth.login') }}">Login page</a> </button>
+    </form>
+  </div>
+</div>
+{% endblock %}

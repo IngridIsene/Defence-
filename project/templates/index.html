@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+
+<head>
+  <h1 class="title">RIN National Bank</h1>
+</head>
+<div>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {{ messages[0] }}
+    {% endif %}
+  {% endwith %} 
+</div>
+
+<body>
+  <h5 class="subtitle"><a href="{{ url_for('auth.login') }}"> Log in <u>here.</u></a><br>
+  Alternatively, <a href="{{ url_for('auth.signup') }}"> <u>register here</u> </a>. </h5>
+</body>
+
+{% endblock %}

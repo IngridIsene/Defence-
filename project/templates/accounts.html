@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="notification is-danger">
+      {{ messages[0] }}. 
+    </div>
+  {% endif %}
+{% endwith %}
+
+<p> Hello {{ user.name }}<br>
+Re-authenticate to view your accounts and transfer funds
+</p>
+<div class="column is-4 is-offset-4">
+  <form method="POST" action='/accounts'>
+    <div class="field">
+        <label for="password">Password</label>
+          <div class="control">
+            <input class="input is-medium" type="password" name="password" placeholder="password" autofocus="off" required><br>
+          </div>
+        <label for=token>One time password</label>
+          <div class="control">  
+            <input class="input is-medium" type="number" name="token" placeholder="one time password" required>
+          </div> 
+          <br>
+        <button class="button is-block is-info is-large is-fullwidth"> Continue </button>
+    </div>
+  </form>
+</div>
+{% endblock %}

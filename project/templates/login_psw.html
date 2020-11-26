@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="column is-4 is-offset-4">
+<form method="POST" action="/login_psw">
+  <div class="field">
+    <label>Password</label>
+    <div class="control">
+        <input class="input is-large" type="password" name="password" placeholder="password" autofocus="">
+    </div>
+  </div>
+  <button class="button is-block is-info is-large is-fullwidth"> Submit </button>
+</div>
+{% endblock %}
